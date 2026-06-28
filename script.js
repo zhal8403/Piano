@@ -6,7 +6,7 @@ function updateKeys(data)
 {
     for(let i = 1; i <= 4; i++)
     {
-        const key = document.getElementById("key" + i)
+        const key = document.getElementById("key" + i);
 
         if (data[i] == 1)
         {
@@ -19,20 +19,20 @@ function updateKeys(data)
     }
 }
 
-function getKeys()
+async function getKeys()
 {
     try
     {
         const response = await fetch("/keys");
         const data = await response.json();
 
-        status.innerHTML = "🟢 connected";
+        status.innerHTML = "Connected";
 
         updateKeys(data);
     }
     catch
     {
-        status.innerHTML = "🔴 Disconnected";
+        status.innerHTML = "Disconnected";
     }
 }
 

@@ -2,18 +2,16 @@
 #include <WebServer.h>
 #include <LittleFS.h>
 
-const char* ssid = "Wifi-Name"; 
-const char* password = "Wifi-pass";
+char* ssid = "NETGEAR31";
+char* password = "greensocks474";
 
 WebServer server(80);
 
-int NOK = 4; // number of keys
+const int NOK = 4; // number of keys
+const int KPins[NOK] = {14, 27,26, 25}; // pins keys are on
+bool KState[NOK]; // State of each key
 
-int KPins[NOK] = {14, 27, 26, 25}; // Pins keys are on
-
-bool KState[NOK];
-
-void sendFile(char* path, char* type)
+void sendFile(const char* path, const char* type)
 {
   File file = LittleFS.open(path, "r");
 
@@ -30,9 +28,9 @@ void sendFile(char* path, char* type)
 
 void handleKeys()
 {
-  String json= "{";
+  String json = "{";
 
-  for (int i = 0; i < NOK; i++)
+  for(int i = 0; i < NOK; i++)
   {
     bool pressed = digitalRead(KPins[i]) == LOW;
 
@@ -41,24 +39,23 @@ void handleKeys()
     json += String(i+1);
     json += "\":";
 
-    if(pressed == true)
+    if(pressed)
     {
-      json += 1;
+      json += "1";
     }
     else
     {
-      json += 0;
+      json += "0";
     }
 
-    if (i<NOK -1)
+    if(i < NOK-1)
     {
       json += ",";
     }
-
-    json+= "}";
-
-    server.send(200, "application/json", json);
   }
+  json += "}";
+
+  server.send(200, "application/json", json);
 }
 
 void setup()
@@ -72,17 +69,17 @@ void setup()
 
   if(!LittleFS.begin(true))
   {
-    Serial.println(LittleFS Failed);
+    Serial.println("LittleFs Failed");
 
     while(true); //stops if failed
   }
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  
-  Serial.print("Connecting");
 
-  while(WiFi.status() != WL_CONNECTED)
+  Serial.print("connecting");
+
+  while (WiFi.status() != WL_CONNECTED)
   {
     delay(500);
     Serial.print(".");
@@ -94,29 +91,28 @@ void setup()
   Serial.print("Open browser to: http://");
   Serial.println(WiFi.localIP());
 
-  //Links html file
+  //links html file
   server.on("/", []()
   {
     sendFile("/index.html", "text/html");
   });
 
-  //Links css file
+  //links css file
   server.on("/style.css", []()
   {
     sendFile("/style.css", "text/css");
   });
 
-  //Links js file
+  //links js file
   server.on("/script.js", []()
   {
     sendFile("/script.js", "application/javascript");
   });
 
-  server.on("/keys, handleKeys");
+  server.on("/keys", handleKeys);
 
   server.begin();
   Serial.println("Server Ready");
-
 }
 
 void loop()
