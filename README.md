@@ -4,5 +4,3 @@ A simple wireless piano built using an ESP32, limit switches, and a web interfac
 
 When a physical key is pressed, the ESP32 sends data over WiFi, and the browser plays the corresponding musical note instantly.
 
-
-{{ wakatimeDoubleCategoryBar "Languages:" wakatimeData.Languages "Projects:" wakatimeData.Projects 5 }}
