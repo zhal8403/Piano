@@ -15,11 +15,9 @@
 
 # Demo
 
-## Wifi Mode
+## Wifi Mode, Standalone Mode and Site
 
-## Standalone Mode
-
-## Site
+[Click Here](https://github.com/zhal8403/Piano/blob/main/Demo.mp4)
 
 ---
 
