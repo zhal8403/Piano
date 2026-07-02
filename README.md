@@ -17,9 +17,7 @@
 
 ### Wifi Mode, Standalone Mode, and Site.
 
-[Click Here](https://github.com/zhal8403/Piano/blob/main/Demo.mp4)
-- click the link
-- click "View raw" to download and view the video
+[Click Here](https://youtu.be/t7fB0u8SUEA)
 
 ---
 
