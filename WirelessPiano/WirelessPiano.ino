@@ -2,8 +2,8 @@
 #include <WebServer.h>
 #include <LittleFS.h>
 
-char* ssid = "NETGEAR31";
-char* password = "greensocks474";
+char* ssid = "WIFI-Name";
+char* password = "WIFI-Password";
 
 WebServer server(80);
 
