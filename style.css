@@ -24,10 +24,10 @@ h1{
 }
 
 #keyboard{
-    display: flex;
+    position: relative;
+    display: inline-flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 8px;
     margin: auto;
     margin-bottom: 40px;
 }
@@ -50,8 +50,12 @@ h1{
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.key:hover{
-    background: #f2f2f2;
+.key.white:hover{
+    background: #d6d1d1;
+}
+
+.key.black:hover{
+    background: #151515;
 }
 
 .key.active{
@@ -60,3 +64,28 @@ h1{
     box-shadow: inset 0px 0px 18px rgba(0, 0, 0, 0.35);
 }
 
+#whiteKey{
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+#blackKey{
+    display: flex;
+    align-items: flex-end;
+}
+
+.black{
+    position: absolute;
+    background: black;
+    color: white;
+    height: 150px;
+    top: 0px;
+    z-index: 10;
+}
+
+#key2 { left: 49px; }   /* C# */
+#key4 { left: 147px; }  /* D# */
+#key7 { left: 343px; }  /* F# */
+#key9 { left: 441px; }  /* G# */
+#key11{ left: 539px; }  /* A# */
