@@ -13,6 +13,16 @@
 
 ---
 
+# Demo
+
+## Wifi Mode
+
+## Standalone Mode
+
+## Site
+
+---
+
 # Photos
 
 ## Full Assembly
@@ -151,10 +161,6 @@ The ESP32 loops through each key and when a key is pressed, the ESP32 send a ton
 - Sustain mode
 - MIDI output
 - Recording and playback
-
----
-
-# Demo
 
 ---
 
